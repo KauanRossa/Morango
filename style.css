@@ -70,7 +70,56 @@ nav ul li a:hover{
     transition: 0.3s;
   }
 
+  main{
+    padding: 3rem;
+  }
 
+    .box-prod{
+      background-color: #022c22;
+
+      border-radius: 1.2rem;
+
+      width: 18rem;
+      height: 20rem;
+
+      padding: 1rem;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+
+
+      color: #fff;
+    }
+
+    .box-prod img{
+      width: 15rem;
+      height: 10rem;
+    }
+
+    .box-prod h2{
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+
+    .box-prod h3{
+      font-size: 1.2rem;
+    }
+
+    .box-prod button{
+      width: 10rem;
+      height: 2.5rem;
+
+      border-radius: .7rem;
+      border: none;
+
+      transition: all 400ms;
+    }
+
+    .box-prod button:hover{
+      background-color: #036624;
+    }
 
 
 
