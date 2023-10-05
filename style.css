@@ -25,6 +25,7 @@ nav{
 
     display: flex;
     justify-content: space-between;
+    flex-direction: column;
     align-items: center;
 
     overflow: hidden;
@@ -36,7 +37,8 @@ nav img{
 
 nav ul{
     display: flex;
-    gap: 2.3rem;
+    align-items: center;
+    gap: 1.5rem;
 
     list-style: none;
 }
@@ -50,6 +52,10 @@ nav ul li a{
 
     border-bottom: 1px solid transparent;
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     transition: all 500ms;
 }
 
@@ -57,121 +63,67 @@ nav ul li a:hover{
     border-bottom: 1px solid;
 }
 
-.mobile-menu {
-    display: none;
-    cursor: pointer;
-  }
-  
-  .mobile-menu div {
-    width: 32px;
-    height: 2px;
-    background: #fff;
-    margin: 8px;
-    transition: 0.3s;
+main{
+  display: flex;
+  justify-content: center;
+ 
+  padding: 2rem;
+
+  height: 100vh;
   }
 
-  main{
-    padding: 3rem;
+.box-prod{
+  width: 35rem;
+  height: 20rem;
+
+  padding: 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card{
+  border-radius: 1.2rem;
+
+  width: 13rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: .4rem;
+
+  color: #000;
   }
 
-    .box-prod{
-      background-color: #022c22;
+.card img{
+  width: 13rem;
+  height: 10rem;
 
-      border-radius: 1.2rem;
+  object-fit: cover;
 
-      width: 18rem;
-      height: 20rem;
+  border-radius: .5rem;
+}
 
-      padding: 1rem;
-
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-
-
-
-      color: #fff;
+.card h2{
+  font-size: 1.3rem;
+  font-weight: 600;
     }
 
-    .box-prod img{
-      width: 15rem;
-      height: 10rem;
-    }
-
-    .box-prod h2{
-      font-size: 1.3rem;
-      font-weight: 600;
-    }
-
-    .box-prod h3{
+    .card h3{
       font-size: 1.2rem;
     }
 
-    .box-prod button{
+    .card button{
       width: 10rem;
-      height: 2.5rem;
+      
+      padding: 1rem;
 
-      border-radius: .7rem;
+      border-radius: .8rem;
       border: none;
 
-      transition: all 400ms;
-    }
+      color: #fff;
 
-    .box-prod button:hover{
-      background-color: #036624;
+      background-color: #022c22;
     }
-
-
-
-
-
-
-@media (max-width: 999px) {
-    .nav-list {
-      position: absolute;
-      top: 15vh;
-      right: 0;
-      width: 50vw;
-      height: 85vh;
-      background: #022c22;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-around;
-      transform: translateX(100%);
-      transition: transform 0.3s ease-in;
-    }
-    .nav-list li {
-      margin-left: 0;
-      opacity: 0;
-    }
-    .mobile-menu {
-      display: block;
-    }
-  }
-  
-  .nav-list.active {
-    transform: translateX(0);
-  }
-  
-  @keyframes navLinkFade {
-    from {
-      opacity: 0;
-      transform: translateX(50px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-  
-  .mobile-menu.active .line1 {
-    transform: rotate(-45deg) translate(-8px, 8px);
-  }
-  
-  .mobile-menu.active .line2 {
-    opacity: 0;
-  }
-  
-  .mobile-menu.active .line3 {
-    transform: rotate(45deg) translate(-5px, -7px);
-  }
