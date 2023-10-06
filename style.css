@@ -13,6 +13,8 @@
 
 body{
     font-family: 'Open Sans', sans-serif;
+
+    overflow-x: hidden;
 }
 
 nav{
@@ -27,8 +29,6 @@ nav{
     justify-content: space-between;
     flex-direction: column;
     align-items: center;
-
-    overflow: hidden;
 }
 
 nav img{
@@ -69,7 +69,7 @@ main{
  
   padding: 2rem;
 
-  height: 100vh;
+  height: 85vh;
   }
 
 .box-prod{
@@ -95,7 +95,13 @@ main{
   gap: .4rem;
 
   color: #000;
-  }
+  
+  transition: all 400ms;
+}
+
+.card:hover{
+  transform: scale(1.1);
+}
 
 .card img{
   width: 13rem;
@@ -113,6 +119,12 @@ main{
 
     .card h3{
       font-size: 1.2rem;
+    }
+
+    .card p{
+      text-align: center;
+
+      color: #000;
     }
 
     .card button{
