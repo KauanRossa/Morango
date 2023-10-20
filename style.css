@@ -1,80 +1,89 @@
 /* font-family: 'Open Sans', sans-serif; */
 
 *{
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 :root{
-    font-size: 62.5%;
+  font-size: 62.5%;
 }
 
 body{
-    font-family: 'Open Sans', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 
-    overflow-x: hidden;
+  overflow-x: hidden;
 }
 
 nav{
-    height: 15vh;
-    width: 100vw;
+  height: 15vh;
+  width: 100vw;
 
-    background-color: #022c22;
+  background-color: #022c22;
 
-    padding: 1.5rem;
+  padding: 1.5rem;
 
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
 }
 
 nav img{
-    width: 70px;
+  width: 70px;
 }
 
 nav ul{
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
 
-    list-style: none;
+  list-style: none;
 }
 
 nav ul li a{
-    text-decoration: none;
+  text-decoration: none;
 
-    color: #fff;
+  color: #fff;
 
-    font-size: 1.3rem;
+  font-size: 1.3rem;
 
-    border-bottom: 1px solid transparent;
+  border-bottom: 1px solid transparent;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    transition: all 500ms;
+  transition: all 500ms;
 }
 
 nav ul li a:hover{
-    border-bottom: 1px solid;
+  border-bottom: 1px solid;
 }
 
 main{
   display: flex;
-  justify-content: center;
+  
+  flex-direction: column;
  
   padding: 2rem;
 
   height: 85vh;
   }
 
+#name{
+  color: #022c22;
+
+  text-align: center;
+
+  font-size: 1.2rem;
+}
+
 .box-prod{
   width: 35rem;
-  height: 20rem;
+  height: 52rem;
 
   padding: 1rem;
 
@@ -137,27 +146,47 @@ main{
 .card h2{
   font-size: 1.3rem;
   font-weight: 600;
-    }
+}
 
-    .card h3{
-      font-size: 1.2rem;
-    }
+.card h3{
+  font-size: 1.2rem;
+}
 
-    .card p{
-      text-align: center;
+.card p{
+  text-align: center;
 
-      color: #000;
-    }
+  color: #000;
+}
 
-    .card button{
-      width: 10rem;
+.card button{
+  width: 10rem;
       
-      padding: 1rem;
+  padding: 1rem;
 
-      border-radius: .8rem;
-      border: none;
+  border-radius: .8rem;
+  border: none;
 
-      color: #fff;
+  color: #fff;
 
-      background-color: #022c22;
-    }
+  background-color: #022c22;
+}
+
+.box-prod{
+  border-bottom: .2rem solid #022c22;
+}
+
+#nameTwo{
+  color: #022c22;
+    
+  text-align: center;
+    
+  font-size: 1.2rem;
+
+  padding: 1rem;
+}
+
+.sobre-nos{
+  font-size: 1.3rem;
+
+  text-align: center;
+}
