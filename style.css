@@ -70,7 +70,7 @@ main{
  
   padding: 2rem;
 
-  height: 85vh;
+ 
   }
 
 #name{
@@ -171,11 +171,7 @@ main{
   background-color: #022c22;
 }
 
-.box-prod{
-  border-bottom: .2rem solid #022c22;
-}
-
-#nameTwo{
+#tit{
   color: #022c22;
     
   text-align: center;
@@ -189,4 +185,72 @@ main{
   font-size: 1.3rem;
 
   text-align: center;
+  
+  padding: 1rem;
+}
+
+.loc{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.map{
+  width: 35rem;
+
+  border-radius: 1rem;
+}
+
+#top{
+  background-color: #022c22;
+
+  border-radius: 50%;
+
+  position: fixed;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  right: 1rem;
+  bottom: 1rem;
+
+  padding: 1rem;
+
+  width: 5rem;
+  height: 5rem;
+}
+
+#top a{
+  color: #fff;
+
+  padding: 1.5rem;
+}
+
+footer{
+  background-color: #022c22;
+
+  height: 8rem;
+
+  padding: 2rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+footer p{
+  text-align: center;
+
+  width: 28rem;
+  height: 100%;
+
+  color: #fff;
+}
+
+footer a{
+  color: #fff;
+
+  text-decoration: none;
 }
