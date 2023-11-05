@@ -1,0 +1,154 @@
+/* font-family: 'Open Sans', sans-serif; */
+
+* {
+    margin: 0;
+    padding: 0;
+  
+    box-sizing: border-box;
+  }
+  
+  :root {
+    font-size: 62.5%;
+  }
+  
+  body {
+    font-family: "Open Sans", sans-serif;
+  
+    overflow-x: hidden;
+  
+    padding: 2rem;
+  
+    height: 100vh;
+  }
+
+  header {
+  width: 80vw;
+  height: 7rem;
+
+  display: flex;
+  align-items: center;
+
+  margin: 0 auto;
+
+  margin-bottom: 2rem;
+}
+
+#page{
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex-direction: column;
+}
+
+form {
+    background-color: #022c22;
+  
+    width: 80vw;
+  
+    margin: 0 auto;
+  
+    border-radius: 1.5rem;
+  
+    padding: 2rem;
+  
+    text-align: center;
+  }
+
+#full{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.3rem;
+  
+    flex-direction: column;
+  
+    padding: 1rem;
+  }
+
+#input-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  #input-col h1{
+    color: #fff;
+  
+    font-size: 1.7rem;
+  }
+  
+  input {
+    padding: 1rem;
+  
+    width: 25rem;
+    height: 3rem;
+  
+    border: none;
+    border-bottom: .2rem solid #ffffff6b;
+  
+    background-color: #022c22;
+  
+    color: #fff;
+  }
+  
+  textarea:focus, input:focus {
+    box-shadow: 0 0 0 0;
+    outline: 0;
+  }
+  
+  input::placeholder {
+    color: #fff;
+  }
+  
+  input[type=number]::-webkit-inner-spin-button,
+      input[type=number]::-webkit-outer-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+      }
+  
+  button{
+    padding: 1rem;
+    
+    border-radius: 1rem;
+    border: none;
+  
+    width: 17rem;
+  }
+  
+  button:hover{
+    background-color: #ffffffcc;
+  }
+
+#buttonBack{
+    position: absolute;
+  
+    top: 2rem;
+    left: 2rem;
+  }
+  
+  #buttonBack a{
+    text-decoration: none;
+  
+    color: #000;
+  
+    padding: .7rem;
+  
+    border: .2rem solid #000;
+    border-radius: 1rem;
+  }
+
+  @media (min-width: 800px){
+    form{
+        width: 30vw;
+        height: 20vh;
+    }
+    
+    #page{
+        width: 30vw;
+
+        margin: 0 auto;
+    }
+}

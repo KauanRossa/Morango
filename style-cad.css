@@ -49,6 +49,14 @@ form {
   border-radius: 1.5rem;
 
   padding: 2rem;
+
+  text-align: center;
+}
+
+form p{
+  color: #fff;
+
+  font-size: 1.2rem;
 }
 
 #full{
@@ -58,6 +66,8 @@ form {
   gap: 1.3rem;
 
   flex-direction: column;
+
+  padding: 1rem;
 }
 
 #input-col {
