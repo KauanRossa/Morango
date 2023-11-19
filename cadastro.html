@@ -19,7 +19,7 @@
     <header>
       <h1>Faça seu cadastro</h1>
     </header>
-    <form>
+    <form action="">
       <div id="full">
         <div id="input-col">
           <h1>Dados pessoais:</h1>
@@ -27,6 +27,7 @@
             type="text"
             name="nome"
             id="nome"
+            class="nome"
             placeholder="Digite seu nome:"
             required
           />
@@ -36,6 +37,7 @@
             type="email"
             name="email"
             id="email"
+            class="email"
             placeholder="Digite seu email:"
             required
           />
@@ -45,6 +47,7 @@
             type="date"
             name="dataNasc"
             id="dataNasc"
+            class="dataNasc"
             required
           />
         </div>
@@ -53,6 +56,7 @@
             type="number"
             name="telefone"
             id="telefone"
+            class="telefone"
             placeholder="(00) 00000-0000"
             required
             maxlength="10"
@@ -63,16 +67,18 @@
             type="password"
             name="senha"
             id="senha"
+            class="senha"
             placeholder="Crie uma senha:"
             required
           />
         </div>
-        <div id="input-col">
+        <!-- <div id="input-col">
           <h1>Endereço:</h1>
           <input
             type="text"
             name="rua"
             id="rua"
+            class="rua"
             placeholder="Digite sua rua:"
             required
           />
@@ -82,6 +88,7 @@
             type="text"
             name="bairro"
             id="bairro"
+            class="bairro"
             placeholder="Digite seu bairro:"
             required
           />
@@ -91,6 +98,7 @@
             type="text"
             name="cidade"
             id="cidade"
+            class="cidade"
             placeholder="Digite sua cidade:"
             required
           />
@@ -100,10 +108,11 @@
             type="text"
             name="numero"
             id="numero"
+            class="numero"
             placeholder="Número:"
           />
-        </div>
-        <button>Cadastrar</button>
+        </div> -->
+        <button type="submit">Cadastrar</button>
       </div>
       <p>Já possui cadastro? <a href="./login.html"> Entrar</a></p>
     </form>
@@ -111,5 +120,6 @@
     <div id="buttonBack">
       <a href="./index.html">Voltar</a>
     </div>
+    <script src="./script.js"></script>
   </body>
 </html>
