@@ -7,7 +7,8 @@ document.addEventListener('DOMContentLoaded', async function() {
         const response = await fetch(`https://33d6-189-28-184-55.ngrok-free.app/api/usuarios/buscar-por-token`, {
           method: 'GET',
           headers: {
-            'Authorization': `Bearer ${token}`
+            'Authorization': `Bearer ${token}`,
+            'ngrok-skip-browser-warning': 'true'
           }
         });
   console.log(response);

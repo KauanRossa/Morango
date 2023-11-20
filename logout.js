@@ -5,8 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
       e.preventDefault();
       // Remove o token do localStorage (simulando o logout)
       localStorage.removeItem('token');
-      // Redireciona para a página de login
+      alert('Você encerrou a sessão.');
       window.location.href = './login.html';
     });
   });
-  

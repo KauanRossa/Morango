@@ -34,12 +34,12 @@ document.addEventListener('DOMContentLoaded', function() {
       console.log('Login realizado:', data);
 
       // Obter tipo de usuário
-      const tipoUsuario = await obterTipoUsuario();
-
+      const tipo = await obterTipoUsuario();
+      
       // Redireciona para a página correspondente com base no tipo de usuário
-      if (tipoUsuario === 'ADMINISTRADOR') {
+      if (tipo === 'ADMINISTRADOR') {
         window.location.href = './index_admin.html';
-      } else if (tipoUsuario === 'CLIENTE') {
+      } else if (tipo === 'CLIENTE') {
         window.location.href = './index.html';
       }
 
@@ -59,6 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const response = await fetch('https://33d6-189-28-184-55.ngrok-free.app/api/usuarios/buscar-por-token', {
         method: 'GET',
         headers: {
+          'ngrok-skip-browser-warning': 'true',
           'Authorization': `Bearer ${token}`
         }
       });
@@ -68,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }
 
       const usuarioLogado = await response.json();
-      return usuarioLogado.tipoUsuario;
+      return usuarioLogado.tipo;
 
     } catch (error) {
       console.error('Erro ao obter as informações do usuário:', error);
