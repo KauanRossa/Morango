@@ -1,10 +1,16 @@
 document.addEventListener('DOMContentLoaded', async function() {
-    const endpointBuscarProdutos = 'https://33d6-189-28-184-55.ngrok-free.app/api/produto/buscar-produtos';
-    const endpointAlterarProduto = 'https://33d6-189-28-184-55.ngrok-free.app/api/produto';
+    const endpointBuscarProdutos = 'https://33d6-189-28-184-55.ngrok-free.app/api/produtos/buscar-todos';
+    const endpointAlterarProduto = 'https://33d6-189-28-184-55.ngrok-free.app/api/produtos/alterar';
 
     async function buscarProdutos() {
         try {
-            const response = await fetch(endpointBuscarProdutos);
+            const response = await fetch(endpointBuscarProdutos,{
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'ngrok-skip-browser-warning': 'true'
+                }
+            });
             if (!response.ok) {
                 throw new Error('Erro ao buscar produtos');
             }
@@ -24,7 +30,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
                     <td data-label="Nome do Produto"><input type="text" value="${produto.nome}"></td>
-                    <td data-label="Quantidade"><input type="number" value="${produto.quantidade}"></td>
+                    <td data-label="Quantidade"><input type="number" value="${produto.quant}"></td>
                     <td data-label="Descrição"><input type="text" value="${produto.descricao}"></td>
                     <td data-label="Preço"><input type="number" value="${produto.preco}" step="0.01"></td>
                     <td data-label="Ações">
