@@ -91,7 +91,7 @@ main{
   font-size: 1.2rem;
 }
 
-.box-prod{
+.produtos-flex {  
   width: 35rem;
 
   padding: 1rem;
@@ -102,28 +102,28 @@ main{
   gap: 2rem;
 }
 
-.box-prod {
+.produtos-flex {
   grid-template-areas:"A B"
                       "C D";
 }
 
-.box-prod div:nth-child(1) {
+.produtos-flex div:nth-child(1) {
   grid-area: A;
 }
 
-.box-prod div:nth-child(2) {
+.produtos-flex div:nth-child(2) {
   grid-area: B;
 }
 
-.box-prod div:nth-child(3) {
+.produtos-flex div:nth-child(3) {
   grid-area: C;
 }
 
-.box-prod div:nth-child(4) {
+.produtos-flex div:nth-child(4) {
   grid-area: D;
 }
-
-.card{
+/* card */
+.produto {
   border-radius: 1.2rem;
 
   width: 13rem;
@@ -139,11 +139,11 @@ main{
   transition: all 400ms;
 }
 
-.card:hover{
+.produto:hover{
   transform: scale(1.1);
 }
 
-.card img{
+.produto img {
   width: 13rem;
   height: 10rem;
 
@@ -152,22 +152,22 @@ main{
   border-radius: .5rem;
 }
 
-.card h2{
+.produto h2 {
   font-size: 1.3rem;
   font-weight: 600;
 }
 
-.card h3{
+.produto h3 {
   font-size: 1.2rem;
 }
 
-.card p{
+.produto p {
   text-align: center;
 
   color: #000;
 }
 
-.card button{
+.produto button {
   width: 10rem;
       
   padding: 1rem;
@@ -278,26 +278,26 @@ footer a{
     font-size: 1.4rem;
   }
 
-  .box-prod{
+  .produtos-flex{
     width: 66rem;
 
     gap: 4rem;
   }
 
-  .box-prod{
+  .produtos-flex{
     grid-template-areas:"A B C D";
   }
 
-  .card h2{
+  .produto h2{
     font-size: 1.5rem;
     font-weight: 600;
   }
   
-  .card h3{
+  .produto h3{
     font-size: 1.4rem;
   }
   
-  .card p{
+  .produto p{
     text-align: center;
 
     font-size: 1.1rem;

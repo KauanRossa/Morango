@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="style-estoque.css">
+
+    <title>Estoque</title>
+</head>
+<body>
+
+<div class="action-buttons">
+    <button class="add">Adicionar</button>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>Nome do Produto</th>
+            <th>Quantidade</th>
+            <th>Descrição</th>
+            <th>Preço</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td data-label="Nome do Produto">Produto 1</td>
+            <td data-label="Quantidade">10</td>
+            <td data-label="Descrição">Descrição do Produto 1</td>
+            <td data-label="Preço">$20.00</td>
+            <td data-label="Ações">
+                <button class="edit">Editar</button>
+                <button class="delete">Excluir</button>
+            </td>
+        </tr>
+        <tr>
+            <td data-label="Nome do Produto">Produto 2</td>
+            <td data-label="Quantidade">5</td>
+            <td data-label="Descrição">Descrição do Produto 2</td>
+            <td data-label="Preço">$15.00</td>
+            <td data-label="Ações">
+                <button class="edit">Editar</button>
+                <button class="delete">Excluir</button>
+            </td>
+        </tr>
+        <!-- Adicione mais linhas conforme necessário -->
+    </tbody>
+</table>
+<div id="buttonBack">
+    <a href="./index_admin.html">Voltar</a>
+</div>
+<script src="./edit_prod.js"></script>
+</body>
+</html>
