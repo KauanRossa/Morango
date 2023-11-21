@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', async function() {
     const endpointBuscarProdutos = 'https://33d6-189-28-184-55.ngrok-free.app/api/produtos/buscar-todos';
     const endpointAlterarProduto = 'https://33d6-189-28-184-55.ngrok-free.app/api/produtos/alterar';
+    const token = localStorage.getItem('token');
 
     async function buscarProdutos() {
         try {
@@ -54,6 +55,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                 const tr = botao.parentElement.parentElement;
                 const idProduto = tr.getAttribute('data-id');
                 const inputs = tr.querySelectorAll('input');
+                const token = localStorage.getItem('token');
 
                 const novoNome = inputs[0].value;
                 const novaQuantidade = inputs[1].value;
@@ -61,10 +63,12 @@ document.addEventListener('DOMContentLoaded', async function() {
                 const novoPreco = inputs[3].value;
 
                 try {
+                    
                     const response = await fetch(`${endpointAlterarProduto}/${idProduto}`, {
                         method: 'PUT',
                         headers: {
                             'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${token}`,
                             'ngrok-skip-browser-warning': 'true'
                         },
                         body: JSON.stringify({
@@ -74,7 +78,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                             preco: novoPreco
                         })
                     });
-
+                        console.log(idProduto);
                     if (response.ok) {
                         exibirProdutos();
                         console.log('Produto editado com sucesso!');
@@ -89,10 +93,10 @@ document.addEventListener('DOMContentLoaded', async function() {
 
         botoesExcluir.forEach(botao => {
             botao.addEventListener('click', async function() {
-                const idProduto = botao.parentElement.parentElement.getAttribute('data-id');
+                const id = botao.parentElement.parentElement.getAttribute('data-id');
                 if (confirm('Tem certeza que deseja excluir o produto?')) {
                     try {
-                        const response = await fetch(`${endpointAlterarProduto}/${idProduto}`, {
+                        const response = await fetch(`${endpointAlterarProduto}/${id}`, {
                             method: 'DELETE'
                         });
 
