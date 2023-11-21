@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', async function() {
     const endpointBuscarProdutos = 'https://33d6-189-28-184-55.ngrok-free.app/api/produtos/buscar-todos';
     const endpointAlterarProduto = 'https://33d6-189-28-184-55.ngrok-free.app/api/produtos/alterar';
+    const endpointDeletarProduto = 'https://33d6-189-28-184-55.ngrok-free.app/api/produtos';
+
     const token = localStorage.getItem('token');
 
     async function buscarProdutos() {
@@ -35,11 +37,10 @@ document.addEventListener('DOMContentLoaded', async function() {
                     <td data-label="Descrição"><input type="text" value="${produto.descricao}"></td>
                     <td data-label="Preço"><input type="number" value="${produto.preco}" step="0.01"></td>
                     <td data-label="Ações">
-                        <button class="edit">Editar</button>
-                        <button class="delete">Excluir</button>
+                    <button class="edit" data-id="${produto.idProduto}">Editar</button>
+                        <button class="delete" data-id="${produto.idProduto}">Excluir</button>
                     </td>
                 `;
-                tr.setAttribute('data-id', produto.id);
                 tbody.appendChild(tr);
             });
         }
@@ -53,15 +54,14 @@ document.addEventListener('DOMContentLoaded', async function() {
         botoesEditar.forEach(botao => {
             botao.addEventListener('click', async function() {
                 const tr = botao.parentElement.parentElement;
-                const idProduto = tr.getAttribute('data-id');
+             
                 const inputs = tr.querySelectorAll('input');
                 const token = localStorage.getItem('token');
-
                 const novoNome = inputs[0].value;
                 const novaQuantidade = inputs[1].value;
                 const novaDescricao = inputs[2].value;
                 const novoPreco = inputs[3].value;
-
+                const idProduto = botao.getAttribute('data-id')
                 try {
                     
                     const response = await fetch(`${endpointAlterarProduto}/${idProduto}`, {
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                         },
                         body: JSON.stringify({
                             nome: novoNome,
-                            quantidade: novaQuantidade,
+                            quant: novaQuantidade,
                             descricao: novaDescricao,
                             preco: novoPreco
                         })
@@ -93,10 +93,10 @@ document.addEventListener('DOMContentLoaded', async function() {
 
         botoesExcluir.forEach(botao => {
             botao.addEventListener('click', async function() {
-                const id = botao.parentElement.parentElement.getAttribute('data-id');
+                const idProduto = botao.getAttribute('data-id')
                 if (confirm('Tem certeza que deseja excluir o produto?')) {
                     try {
-                        const response = await fetch(`${endpointAlterarProduto}/${id}`, {
+                        const response = await fetch(`${endpointDeletarProduto}/${idProduto}`, {
                             method: 'DELETE'
                         });
 
