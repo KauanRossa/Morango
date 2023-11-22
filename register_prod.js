@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
         quant: parseInt(document.getElementById('quantidade').value)
       };
   
-      fetch('https://33d6-189-28-184-55.ngrok-free.app/api/produtos', {
+      fetch('https://b1eb-189-28-184-45.ngrok-free.app/api/produtos', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -28,12 +28,11 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(response => response.json())
         .then(data => {
           console.log('Produto cadastrado:', data);
-          limparCampos(); // Chamando a função para limpar os campos
+          limparCampos();
           alert('Cadastrado com sucesso.')
         })
         .catch(error => {
           console.error('Erro ao cadastrar o produto:', error);
-          // Trate os erros conforme necessário
         });
     });
   });

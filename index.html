@@ -71,6 +71,29 @@
                 <button>Comprar</button>
             </div>
         </div>
+        <div class="popup-overlay" id="popup">
+            <div class="popup-content">
+                <h1>Detalhes do Produto</h1>
+                <h2 id="nomeProduto"></h2>
+                <h3 id="valorProduto"></h3>
+                <input type="number" id="quantidadeProduto" placeholder="Quantidade" min="1" value="1">
+        
+                <h1>Endereço de Entrega</h1>
+                <input type="text" id="enderecoRua" placeholder="Rua">
+                <input type="text" id="enderecoBairro" placeholder="Bairro">
+                <input type="text" id="enderecoCidade" placeholder="Cidade">
+                <input type="text" id="numeroCasa" placeholder="Número da Casa">
+    
+                <h1>Valor Total</h1>
+                <h3 id="valorTotalProduto">Valor total: R$ 0.00</h3>
+        
+                <button onclick="finalizarCompra()">Finalizar Compra</button>
+    
+                <div id="buttonBack">
+                    <a href="./index.html">Voltar</a>
+                </div>
+            </div>
+        </div>
             </div>
             <div id="pick">
             <div id="sobre-emp">

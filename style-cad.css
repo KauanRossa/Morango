@@ -59,6 +59,10 @@ form p{
   font-size: 1.2rem;
 }
 
+form a{
+  color: #fff;
+}
+
 #full{
   display: flex;
   justify-content: center;

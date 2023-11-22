@@ -33,7 +33,7 @@ function enviarDados() {
 
 function cadastrarUsuario() {
   const dadosFormulario = enviarDados();
-  fetch('https://33d6-189-28-184-55.ngrok-free.app/api/cadastrar', {
+  fetch('https://b1eb-189-28-184-45.ngrok-free.app/api/cadastrar', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -49,7 +49,6 @@ function cadastrarUsuario() {
   })
   .then(data => {
     console.log('Usuário cadastrado:', data);
-    // Redireciona para a página de login após o cadastro
     window.location.href = './login.html';
   })
   .catch(error => {

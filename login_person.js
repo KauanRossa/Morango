@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     try {
-      const response = await fetch('https://33d6-189-28-184-55.ngrok-free.app/api/login', {
+      const response = await fetch('https://b1eb-189-28-184-45.ngrok-free.app/api/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -29,14 +29,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
       const data = await response.json();
 
-      // Armazena o token no localStorage
       localStorage.setItem('token', data.token);
       console.log('Login realizado:', data);
 
-      // Obter tipo de usuário
       const tipo = await obterTipoUsuario();
       
-      // Redireciona para a página correspondente com base no tipo de usuário
       if (tipo === 'ADMINISTRADOR') {
         window.location.href = './index_admin.html';
       } else if (tipo === 'CLIENTE') {
@@ -45,9 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     } catch (error) {
       console.error('Erro ao realizar login:', error);
-      // Exibe um alerta para o usuário quando as credenciais estiverem incorretas
       alert(error.message);
-      // Limpa os campos do formulário
       limparCampos();
     }
   }
@@ -56,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const token = localStorage.getItem('token');
 
     try {
-      const response = await fetch('https://33d6-189-28-184-55.ngrok-free.app/api/usuarios/buscar-por-token', {
+      const response = await fetch('https://b1eb-189-28-184-45.ngrok-free.app/api/usuarios/buscar-por-token', {
         method: 'GET',
         headers: {
           'ngrok-skip-browser-warning': 'true',

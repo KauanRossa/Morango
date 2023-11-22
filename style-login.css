@@ -57,6 +57,10 @@ form {
     text-align: center;
   }
 
+  form a{
+    color: #fff;
+  }
+
 #full{
     display: flex;
     justify-content: center;
@@ -144,6 +148,10 @@ form {
     form{
         width: 30vw;
         height: 25vh;
+    }
+
+    input{
+      width: 20rem;
     }
     
     #page{

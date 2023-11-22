@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', async function() {
       const token = localStorage.getItem('token');
   
       try {
-        const response = await fetch(`https://33d6-189-28-184-55.ngrok-free.app/api/usuarios/buscar-por-token`, {
+        const response = await fetch(`https://b1eb-189-28-184-45.ngrok-free.app/api/usuarios/buscar-por-token`, {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', async function() {
       const token = localStorage.getItem('token');
   
       try {
-        const response = await fetch(`https://33d6-189-28-184-55.ngrok-free.app/api/usuarios/alterar`, {
+        const response = await fetch(`https://b1eb-189-28-184-45.ngrok-free.app/api/usuarios/alterar`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
@@ -56,15 +56,12 @@ document.addEventListener('DOMContentLoaded', async function() {
         console.error('Erro ao salvar as alterações:', error);
       }
     }
-  
-    // Preencher os dados do usuário ao carregar a página
+
     await preencherDadosUsuario();
-  
-    // Adicionar a lógica para submeter o formulário de edição
+
     const form = document.getElementById('editForm');
     form.addEventListener('submit', enviarAlteracoes);
   
-    // Adicionar a lógica de logout ao clicar no link "Sair da Sua Conta"
     const logoutLink = document.getElementById('logoutLink');
     logoutLink.addEventListener('click', function(e) {
       e.preventDefault();

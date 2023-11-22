@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', async function() {
-    const endpointBuscarProdutos = 'https://33d6-189-28-184-55.ngrok-free.app/api/produtos/buscar-todos';
-    const endpointAlterarProduto = 'https://33d6-189-28-184-55.ngrok-free.app/api/produtos/alterar';
-    const endpointDeletarProduto = 'https://33d6-189-28-184-55.ngrok-free.app/api/produtos';
+    const endpointBuscarProdutos = 'https://b1eb-189-28-184-45.ngrok-free.app/api/produtos/buscar-todos';
+    const endpointAlterarProduto = 'https://b1eb-189-28-184-45.ngrok-free.app/api/produtos/alterar';
+    const endpointDeletarProduto = 'https://b1eb-189-28-184-45.ngrok-free.app/api/produtos';
 
     const token = localStorage.getItem('token');
 
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                     <td data-label="Descrição"><input type="text" value="${produto.descricao}"></td>
                     <td data-label="Preço"><input type="number" value="${produto.preco}" step="0.01"></td>
                     <td data-label="Ações">
-                    <button class="edit" data-id="${produto.idProduto}">Editar</button>
+                    <button class="edit" data-id="${produto.idProduto}">Alterar</button>
                         <button class="delete" data-id="${produto.idProduto}">Excluir</button>
                     </td>
                 `;
