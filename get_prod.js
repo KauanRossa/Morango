@@ -1,6 +1,6 @@
 async function carregarProdutos() {
     try {
-        const response = await fetch('https://b1eb-189-28-184-45.ngrok-free.app/api/produtos/buscar-todos', {
+        const response = await fetch('http://localhost:8080/api/produtos/buscar-todos', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -51,6 +51,7 @@ async function carregarProdutos() {
                     const valorProdutoSelecionado = produto.preco;
                     exibirPopup();
                     preencherDetalhesProduto(nomeProdutoSelecionado, valorProdutoSelecionado);
+                    adicionarAoCarrinho(nome, preco);
                 } else {
                     window.location.href = 'login.html';
                     alert('Faça o cadastro para efetuar a compra');

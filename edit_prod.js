@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', async function() {
-    const endpointBuscarProdutos = 'https://b1eb-189-28-184-45.ngrok-free.app/api/produtos/buscar-todos';
-    const endpointAlterarProduto = 'https://b1eb-189-28-184-45.ngrok-free.app/api/produtos/alterar';
-    const endpointDeletarProduto = 'https://b1eb-189-28-184-45.ngrok-free.app/api/produtos';
+    const endpointBuscarProdutos = 'http://localhost:8080/api/produtos/buscar-todos';
+    const endpointAlterarProduto = 'http://localhost:8080/api/produtos/alterar';
+    const endpointDeletarProduto = 'http://localhost:8080/api/produtos';
 
     const token = localStorage.getItem('token');
 
