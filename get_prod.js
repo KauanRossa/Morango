@@ -47,11 +47,7 @@ async function carregarProdutos() {
 
             botaoComprar.addEventListener('click', function() {
                 if (estaLogado()) {
-                    const nomeProdutoSelecionado = produto.nome;
-                    const valorProdutoSelecionado = produto.preco;
-                    exibirPopup();
-                    preencherDetalhesProduto(nomeProdutoSelecionado, valorProdutoSelecionado);
-                    adicionarAoCarrinho(nome, preco);
+                   
                 } else {
                     window.location.href = 'login.html';
                     alert('Faça o cadastro para efetuar a compra');
@@ -73,51 +69,3 @@ async function carregarProdutos() {
 document.addEventListener('DOMContentLoaded', function() {
     carregarProdutos();
 });
-
-function exibirPopup() {
-    var popup = document.getElementById('popup');
-    popup.style.display = 'flex';
-}
-
-function preencherDetalhesProduto(nome, valor) {
-    const nomeProdutoElement = document.getElementById('nomeProduto');
-    nomeProdutoElement.textContent = nome;
-
-    const valorProdutoElement = document.getElementById('valorProduto');
-    valorProdutoElement.textContent = `Valor unitário: R$ ${valor.toFixed(2)}`;
-
-    const quantidadeInput = document.getElementById('quantidadeProduto');
-    quantidadeInput.addEventListener('input', calcularValorTotal);
-
-    calcularValorTotal();
-}
-
-function calcularValorTotal() {
-    const valorUnitario = parseFloat(document.getElementById('valorProduto').textContent.split(' ')[2]);
-    const quantidade = parseInt(document.getElementById('quantidadeProduto').value);
-    const valorTotal = valorUnitario * quantidade;
-
-    const valorTotalElement = document.getElementById('valorTotalProduto');
-    valorTotalElement.textContent = `Valor total: R$ ${valorTotal.toFixed(2)}`;
-}
-
-function finalizarCompra() {
-    const nomeProduto = document.getElementById('nomeProduto').textContent;
-    const valorUnitario = parseFloat(document.getElementById('valorProduto').textContent.split(' ')[2]);
-    const quantidade = parseInt(document.getElementById('quantidadeProduto').value);
-    const valorTotal = valorUnitario * quantidade;
-
-    const enderecoRua = document.getElementById('enderecoRua').value;
-    const enderecoBairro = document.getElementById('enderecoBairro').value;
-    const enderecoCidade = document.getElementById('enderecoCidade').value;
-    const numeroCasa = document.getElementById('numeroCasa').value;
-
-    console.log(nomeProduto, valorTotal, enderecoRua, enderecoBairro, enderecoCidade, numeroCasa);
-
-    fecharPopup();
-}
-
-function fecharPopup() {
-    var popup = document.getElementById('popup');
-    popup.style.display = 'none';
-}
