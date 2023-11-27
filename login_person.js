@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     try {
-      const response = await fetch('http://localhost:8080/api/login', {
+      const response = await fetch('https://e8dd-189-28-184-45.ngrok-free.app/api/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const token = localStorage.getItem('token');
 
     try {
-      const response = await fetch('http://localhost:8080/api/usuarios/buscar-por-token', {
+      const response = await fetch('https://e8dd-189-28-184-45.ngrok-free.app/api/usuarios/buscar-por-token', {
         method: 'GET',
         headers: {
           'ngrok-skip-browser-warning': 'true',

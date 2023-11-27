@@ -33,7 +33,7 @@ function enviarDados() {
 }
 function cadastrarUsuario() {
   const dadosFormulario = enviarDados();
-  fetch('https://d797-189-28-184-55.ngrok-free.app/api/cadastrar', {
+  fetch('https://e8dd-189-28-184-45.ngrok-free.app/api/cadastrar', {
     method: 'POST',
     body: dadosFormulario,
   })

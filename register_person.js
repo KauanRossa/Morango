@@ -33,7 +33,7 @@ function enviarDados() {
 
 function cadastrarUsuario() {
   const dadosFormulario = enviarDados();
-  fetch('http://localhost:8080/api/cadastrar', {
+  fetch('https://e8dd-189-28-184-45.ngrok-free.app/api/cadastrar', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

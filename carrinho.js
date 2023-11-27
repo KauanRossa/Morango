@@ -1,131 +1,229 @@
-document.addEventListener('DOMContentLoaded', async function() {
-    const endpointBuscarCarrinho = 'http://localhost:8080/api/carrinhos/adcionarProduto'; // Substitua pelo endpoint correto
+async function adicionarProdutoAoCarrinho(produtoId) {
+    try {
+        const token = localStorage.getItem('token');
+       
+        const response = await fetch('https://e8dd-189-28-184-45.ngrok-free.app/api/carrinhos/adicionar-produto', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
+                'ngrok-skip-browser-warning': 'true'
+            },
+            body: JSON.stringify({
+                "idProduto": produtoId
+            })
+        });
 
-    async function buscarCarrinho() {
-        try {
-            const response = await fetch(endpointBuscarCarrinho, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'ngrok-skip-browser-warning': 'true'
-                }
-            });
-            
-            if (!response.ok) {
-                throw new Error('Erro ao buscar carrinho');
+        if (!response.ok) {
+            throw new Error('Erro ao adicionar produto ao carrinho');
+        }
+
+        // Lógica adicional após adicionar o produto ao carrinho, se necessário
+        alert('Produto adicionado ao carrinho com sucesso!');
+        // Qualquer ação adicional após adicionar o produto ao carrinho
+
+    } catch (error) {
+        console.error('Erro ao adicionar produto ao carrinho:', error);
+    }
+}
+
+async function obterDetalhesCarrinho() {
+    try {
+        const token = localStorage.getItem('token');
+      
+        const response = await fetch('https://e8dd-189-28-184-45.ngrok-free.app/api/carrinhos/mostrar-carrinho', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
+                'ngrok-skip-browser-warning': 'true'
             }
+        });
 
-            const carrinho = await response.json();
-            return carrinho;
-        } catch (error) {
-            console.error('Erro ao buscar carrinho:', error);
+        if (!response.ok) {
+            throw new Error('Erro ao obter detalhes do carrinho');
         }
+
+        const carrinho = await response.json();
+        // Processar detalhes do carrinho, se necessário
+        return carrinho;
+
+    } catch (error) {
+        console.error('Erro ao obter detalhes do carrinho:', error);
+        return null;
     }
+}
 
-    async function exibirCarrinho() {
-        const tbody = document.getElementById('carrinho-table-body');
-        const totalValue = document.getElementById('total-value');
-        
-        const carrinho = await buscarCarrinho();
-        
-        if (carrinho) {
-            tbody.innerHTML = '';
-            totalValue.textContent = `R$ ${carrinho.total.toFixed(2)}`;
-
-            carrinho.produtos.forEach(produto => {
-                const tr = document.createElement('tr');
-                tr.innerHTML = `
-                    <td>${produto.nome}</td>
-                    <td>R$ ${produto.preco.toFixed(2)}</td>
-                    <td>
-                        <button class="remove" data-id="${produto.idProduto}">Remover</button>
-                    </td>
-                `;
-                tbody.appendChild(tr);
-            });
-
-            configurarBotoes();
+async function preencherCarrinho() {
+    try {
+        const token = localStorage.getItem('token');
+        const carrinho = await obterDetalhesCarrinho();
+         
+        if (!carrinho || !carrinho.produtos || carrinho.produtos.length === 0) {
+            console.log('O carrinho está vazio');
+            return;
         }
-    }
-
-    function configurarBotoes() {
-        const botoesRemover = document.querySelectorAll('.remove');
         
-        botoesRemover.forEach(botao => {
-            botao.addEventListener('click', async function() {
-                const produtoId = botao.getAttribute('data-id');
-                
+        const tbody = document.getElementById('produtos');
+        let subTotal = 0;
+
+        carrinho.produtos.forEach(produto => {
+            const tr = document.createElement('tr');
+
+            const tdNome = document.createElement('td');
+            const divProduto = document.createElement('div');
+            divProduto.classList.add('product');
+            const divInfo = document.createElement('div');
+            divInfo.classList.add('info');
+            const divNome = document.createElement('div');
+            divNome.classList.add('name');
+            divNome.textContent = produto.nome;
+
+            divInfo.appendChild(divNome);
+            divProduto.appendChild(divInfo);
+            tdNome.appendChild(divProduto);
+            tr.appendChild(tdNome);
+
+            const tdPreco = document.createElement('td');
+            tdPreco.textContent = `R$ ${produto.preco}`;
+            tr.appendChild(tdPreco);
+
+            const tdQuantidade = document.createElement('td');
+            tdQuantidade.innerHTML = `
+                <div class="qty">
+                    <button class="minus-btn"><i class="bx bx-minus"></i></button>
+                    <span>${produto.quantidade}</span>
+                    <button class="plus-btn"><i class="bx bx-plus"></i></button>
+                </div>
+            `;
+            tr.appendChild(tdQuantidade);
+
+            let totalProduto = produto.preco * produto.quantidade; // Declaração movida para cá
+
+            const tdTotal = document.createElement('td');
+            tdTotal.textContent = `R$ ${totalProduto}`;
+            tr.appendChild(tdTotal);
+
+            subTotal += totalProduto;
+
+            tbody.appendChild(tr);
+            const tdExcluir = document.createElement('td');
+            const btnExcluir = document.createElement('button');
+            btnExcluir.textContent = 'Excluir';
+            btnExcluir.classList.add('excluir-produto'); // Adicionando classe para identificação
+            tdExcluir.appendChild(btnExcluir);
+            tr.appendChild(tdExcluir);
+            btnExcluir.setAttribute('data-product-id', produto.idProduto);
+            const increaseQuantity = async () => {
                 try {
-                    const response = await fetch(`http://localhost:8080/api/carrinhos/remover-produto/${produtoId}`, {
-                        method: 'DELETE',
+                    const response = await fetch('https://e8dd-189-28-184-45.ngrok-free.app/api/carrinhos/aumentar-quantidade', {
+                        method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${token}`,
                             'ngrok-skip-browser-warning': 'true'
-                        }
+                        },
+                        body: JSON.stringify({
+                            "idProduto": produto.idProduto,
+                            "quantidade": 1
+                        })
                     });
 
-                    if (response.ok) {
-                        exibirCarrinho();
-                        console.log('Produto removido do carrinho com sucesso!');
-                    } else {
-                        throw new Error('Erro ao remover produto do carrinho');
+                    if (!response.ok) {
+                        throw new Error('Erro ao aumentar a quantidade do produto');
                     }
+                    window.location.reload();
                 } catch (error) {
-                    console.error('Erro ao remover produto do carrinho:', error);
+                    console.error('Erro ao aumentar a quantidade:', error);
                 }
-            });
-        });
-    }
-    document.addEventListener('DOMContentLoaded', function() {
-        const removeButtons = document.querySelectorAll('.remove');
-        const plusButtons = document.querySelectorAll('.bx-plus');
-        const minusButtons = document.querySelectorAll('.bx-minus');
- 
-        removeButtons.forEach(button => {
-          button.addEventListener('click', function() {
-            const item = button.closest('tr');
-            item.remove();
-            calcularTotal();
-          });
+            };
+
+            const decreaseQuantity = async () => {
+                try {
+                    if (produto.quantidade >= 1) {
+                        const response = await fetch('https://e8dd-189-28-184-45.ngrok-free.app/api/carrinhos/diminuir-quantidade', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Authorization': `Bearer ${token}`,
+                                'ngrok-skip-browser-warning': 'true'
+                            },
+                            body: JSON.stringify({
+                                "idProduto": produto.idProduto,
+                                "quantidade": 1
+                            })
+                        });
+
+                        if (!response.ok) {
+                            throw new Error('Erro ao diminuir a quantidade do produto');
+                        }
+                        window.location.reload();
+                    }
+
+                } catch (error) {
+                    console.error('Erro ao diminuir a quantidade:', error);
+                }
+            };
+
+            tdQuantidade.querySelector('.plus-btn').addEventListener('click', increaseQuantity);
+            tdQuantidade.querySelector('.minus-btn').addEventListener('click', decreaseQuantity);
         });
 
-        plusButtons.forEach(button => {
-          button.addEventListener('click', function() {
-            const qtyElement = button.parentElement.querySelector('span');
-            let qty = parseInt(qtyElement.textContent);
-            qty++;
-            qtyElement.textContent = qty;
-            calcularTotal();
-          });
-        });
+        const subtotalElement = document.querySelector('.summary .info div:nth-child(1) span:nth-child(2)');
+        subtotalElement.textContent = `R$ ${subTotal}`;
 
-        minusButtons.forEach(button => {
-          button.addEventListener('click', function() {
-            const qtyElement = button.parentElement.querySelector('span');
-            let qty = parseInt(qtyElement.textContent);
-            if (qty > 1) {
-              qty--;
-              qtyElement.textContent = qty;
-              calcularTotal();
-            }
-          });
-        });
-      
-        function calcularTotal() {
-          const produtos = document.querySelectorAll('tbody tr');
-          let total = 0;
-      
-          produtos.forEach(produto => {
-            const preco = parseFloat(produto.querySelector('td:nth-child(4)').textContent.slice(3));
-            const quantidade = parseInt(produto.querySelector('.qty span').textContent);
-            total += preco * quantidade;
-          });
-      
-          const totalElement = document.querySelector('.summary footer span:last-child');
-          totalElement.textContent = `R$ ${total.toFixed(2)}`;
+        const totalElement = document.querySelector('.summary footer span:nth-child(2)');
+        totalElement.textContent = `R$ ${carrinho.total}`;
+        
+async function excluirProdutoDoCarrinho(produtoId) {
+    try {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            window.location.href = 'login.html';
+            alert('Faça o cadastro para efetuar a compra');
+            return; // Retorna caso não haja token
         }
-      });
-      
 
-    exibirCarrinho();
+        const response = await fetch(`https://e8dd-189-28-184-45.ngrok-free.app/api/carrinho-produto/${produtoId}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
+                'ngrok-skip-browser-warning': 'true'
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error('Erro ao excluir o produto do carrinho');
+        }
+
+        // Atualizar a página após a exclusão
+        window.location.reload();
+
+    } catch (error) {
+        console.error('Erro ao excluir o produto:', error);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    preencherCarrinho(); // Chama a função para preencher o carrinho
+
+    document.querySelectorAll('.excluir-produto').forEach(btn => {
+        btn.addEventListener('click', async (event) => {
+            console.log('Botão de exclusão clicado'); // Verifica se o evento está sendo acionado
+
+            const idProduto = event.target.dataset.productId; 
+            console.log('ID do Produto:', idProduto); 
+
+            if (idProduto) {
+                await excluirProdutoDoCarrinho(idProduto);
+            }
+        });
+    });
 });
+    } catch (error) {
+        console.error('Erro ao preencher o carrinho:', error);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', preencherCarrinho);
