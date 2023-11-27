@@ -122,7 +122,7 @@ main{
 .produtos-flex div:nth-child(4) {
   grid-area: D;
 }
-/* card */
+
 .produto {
   border-radius: 1.2rem;
 
@@ -268,65 +268,6 @@ footer a{
   color: #fff;
 
   text-decoration: none;
-}
-
-/* Estilos para a popup */
-.popup-overlay {
-  display: none;
-  position: fixed;
-  top: 0;
-  right: 0; /* Define o canto direito */
-  height: 80%; /* Cobrir 100% da altura */
-  z-index: 9999;
-}
-
-.popup-content {
-  background-color: white;
-  padding: 20px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-
-  gap: 1.5rem;
-
-  border-radius: 1rem 0 0 1rem;
-}
-  
-  textarea:focus, input:focus {
-    box-shadow: 0 0 0 0;
-    outline: 0;
-  }
-  
-  input::placeholder {
-    color: #fff;
-  }
-
-.popup-content input {
-    display: block;
-
-    padding: 1rem;
-  
-    width: 25rem;
-    height: 3rem;
-  
-    border: none;
-    border-bottom: .2rem solid #ffffff6b;
-    border-radius: 1rem;
-  
-    background-color: #022c22;
-  
-    color: #fff;
-}
-
-.popup-content button{
-  border: none;
-
-  border: 1px solid #022c22;
-  border-radius: 2rem;
-
-  padding: 1rem;
 }
 
 .button-wrapper {
