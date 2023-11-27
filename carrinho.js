@@ -222,4 +222,42 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 }
 
+function calcularTotal() {
+    const produtosRows = document.querySelectorAll('#produtos tr');
+    let total = 0;
+  
+    produtosRows.forEach(row => {
+      const precoProduto = parseFloat(row.querySelector('td:nth-child(2)').textContent.replace('R$ ', ''));
+      const quantidadeProduto = parseInt(row.querySelector('.qty span').textContent);
+      total += precoProduto * quantidadeProduto;
+    });
+  
+    return total.toFixed(2);
+  }
+  
+  function enviarDetalhesWhatsApp() {
+    const produtosDetalhes = [];
+    const produtosRows = document.querySelectorAll('#produtos tr');
+  
+    produtosRows.forEach(row => {
+      const nomeProduto = row.querySelector('.name').textContent;
+      const precoProduto = row.querySelector('td:nth-child(2)').textContent.replace('R$ ', '');
+      const quantidadeProduto = row.querySelector('.qty span').textContent;
+      produtosDetalhes.push({ nome: nomeProduto, preco: precoProduto, quantidade: quantidadeProduto });
+    });
+  
+    let mensagemProdutos = 'Detalhes da Compra:%0A';
+  
+    produtosDetalhes.forEach(produto => {
+      mensagemProdutos += `Nome: ${produto.nome}%0APreço: R$ ${produto.preco}%0AQuantidade: ${produto.quantidade}%0A%0A`;
+    });
+  
+    const totalCompra = calcularTotal();
+  
+    const mensagemFinal =
+      `Olá! Segue a lista de produtos no carrinho:%0A%0A${mensagemProdutos}%0ATotal da Compra: R$ ${totalCompra}.`;
+  
+    window.open(`https://wa.me/5548991651183?text=${mensagemFinal}`, '_blank');
+  }
+
 document.addEventListener('DOMContentLoaded', preencherCarrinho);
