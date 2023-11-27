@@ -268,3 +268,23 @@ aside > button {
 aside > button:hover {
   background: #3bc55b;
 }
+
+#finalizar-whats{
+  border: 0;
+  padding: 15px 0;
+  color: white;
+  background: #28a745;
+  display: block;
+  width: 100%;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 16px;
+}
+
+#finalizar-whats:hover{
+  background: #3bc55b;
+}
+
+a{
+  text-decoration: none;
+}

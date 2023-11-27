@@ -18,9 +18,7 @@ async function adicionarProdutoAoCarrinho(produtoId) {
             throw new Error('Erro ao adicionar produto ao carrinho');
         }
 
-        // Lógica adicional após adicionar o produto ao carrinho, se necessário
         alert('Produto adicionado ao carrinho com sucesso!');
-        // Qualquer ação adicional após adicionar o produto ao carrinho
 
     } catch (error) {
         console.error('Erro ao adicionar produto ao carrinho:', error);
@@ -45,7 +43,6 @@ async function obterDetalhesCarrinho() {
         }
 
         const carrinho = await response.json();
-        // Processar detalhes do carrinho, se necessário
         return carrinho;
 
     } catch (error) {
@@ -98,7 +95,7 @@ async function preencherCarrinho() {
             `;
             tr.appendChild(tdQuantidade);
 
-            let totalProduto = produto.preco * produto.quantidade; // Declaração movida para cá
+            let totalProduto = produto.preco * produto.quantidade; 
 
             const tdTotal = document.createElement('td');
             tdTotal.textContent = `R$ ${totalProduto}`;
@@ -110,7 +107,7 @@ async function preencherCarrinho() {
             const tdExcluir = document.createElement('td');
             const btnExcluir = document.createElement('button');
             btnExcluir.textContent = 'Excluir';
-            btnExcluir.classList.add('excluir-produto'); // Adicionando classe para identificação
+            btnExcluir.classList.add('excluir-produto');
             tdExcluir.appendChild(btnExcluir);
             tr.appendChild(tdExcluir);
             btnExcluir.setAttribute('data-product-id', produto.idProduto);
