@@ -1,6 +1,6 @@
 async function carregarProdutos() {
     try {
-        const response = await fetch('https://e8dd-189-28-184-45.ngrok-free.app/api/produtos/buscar-todos', {
+        const response = await fetch('http://localhost:8080/api/produtos/buscar-todos', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

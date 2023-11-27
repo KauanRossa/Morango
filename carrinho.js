@@ -2,7 +2,7 @@ async function adicionarProdutoAoCarrinho(produtoId) {
     try {
         const token = localStorage.getItem('token');
        
-        const response = await fetch('https://e8dd-189-28-184-45.ngrok-free.app/api/carrinhos/adicionar-produto', {
+        const response = await fetch('http://localhost:8080/api/carrinhos/adicionar-produto', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -31,7 +31,7 @@ async function obterDetalhesCarrinho() {
     try {
         const token = localStorage.getItem('token');
       
-        const response = await fetch('https://e8dd-189-28-184-45.ngrok-free.app/api/carrinhos/mostrar-carrinho', {
+        const response = await fetch('http://localhost:8080/api/carrinhos/mostrar-carrinho', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -116,7 +116,7 @@ async function preencherCarrinho() {
             btnExcluir.setAttribute('data-product-id', produto.idProduto);
             const increaseQuantity = async () => {
                 try {
-                    const response = await fetch('https://e8dd-189-28-184-45.ngrok-free.app/api/carrinhos/aumentar-quantidade', {
+                    const response = await fetch('http://localhost:8080/api/carrinhos/aumentar-quantidade', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -141,7 +141,7 @@ async function preencherCarrinho() {
             const decreaseQuantity = async () => {
                 try {
                     if (produto.quantidade >= 1) {
-                        const response = await fetch('https://e8dd-189-28-184-45.ngrok-free.app/api/carrinhos/diminuir-quantidade', {
+                        const response = await fetch('http://localhost:8080/api/carrinhos/diminuir-quantidade', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json',
@@ -181,10 +181,10 @@ async function excluirProdutoDoCarrinho(produtoId) {
         if (!token) {
             window.location.href = 'login.html';
             alert('Faça o cadastro para efetuar a compra');
-            return; // Retorna caso não haja token
+            return; 
         }
 
-        const response = await fetch(`https://e8dd-189-28-184-45.ngrok-free.app/api/carrinho-produto/${produtoId}`, {
+        const response = await fetch(`http://localhost:8080/api/carrinho-produto/${produtoId}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -197,7 +197,6 @@ async function excluirProdutoDoCarrinho(produtoId) {
             throw new Error('Erro ao excluir o produto do carrinho');
         }
 
-        // Atualizar a página após a exclusão
         window.location.reload();
 
     } catch (error) {
@@ -206,11 +205,11 @@ async function excluirProdutoDoCarrinho(produtoId) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    preencherCarrinho(); // Chama a função para preencher o carrinho
+    preencherCarrinho(); 
 
     document.querySelectorAll('.excluir-produto').forEach(btn => {
         btn.addEventListener('click', async (event) => {
-            console.log('Botão de exclusão clicado'); // Verifica se o evento está sendo acionado
+            console.log('Botão de exclusão clicado');
 
             const idProduto = event.target.dataset.productId; 
             console.log('ID do Produto:', idProduto); 

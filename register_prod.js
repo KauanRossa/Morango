@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
         quant: parseInt(document.getElementById('quantidade').value)
       };
   
-      fetch('https://e8dd-189-28-184-45.ngrok-free.app/api/produtos', {
+      fetch('http://localhost:8080/api/produtos', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
