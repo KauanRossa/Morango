@@ -353,6 +353,10 @@ footer a{
 
   footer{
     height: 12rem;
+
+    position: relative;
+
+    bottom: 0;
   }
 
   footer p{
