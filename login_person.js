@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     try {
-      const response = await fetch('http://localhost:8080/api/login', {
+      const response = await fetch('https://bfc2-2804-520-c3-8300-f5ff-da2a-d7b6-2e25.ngrok.io/api/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const token = localStorage.getItem('token');
 
     try {
-      const response = await fetch('http://localhost:8080/api/usuarios/buscar-por-token', {
+      const response = await fetch('https://bfc2-2804-520-c3-8300-f5ff-da2a-d7b6-2e25.ngrok.io/api/usuarios/buscar-por-token', {
         method: 'GET',
         headers: {
           'ngrok-skip-browser-warning': 'true',

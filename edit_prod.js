@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', async function() {
-    const endpointBuscarProdutos = 'http://localhost:8080/api/produtos/buscar-todos';
+    const endpointBuscarProdutos = 'https://bfc2-2804-520-c3-8300-f5ff-da2a-d7b6-2e25.ngrok.io/api/produtos/buscar-todos';
     const endpointAlterarProduto = 'http://localhost:8080/api/produtos/alterar';
     const endpointDeletarProduto = 'http://localhost:8080/api/produtos';
 

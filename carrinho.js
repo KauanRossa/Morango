@@ -2,7 +2,7 @@ async function adicionarProdutoAoCarrinho(produtoId) {
     try {
         const token = localStorage.getItem('token');
        
-        const response = await fetch('http://localhost:8080/api/carrinhos/adicionar-produto', {
+        const response = await fetch('https://bfc2-2804-520-c3-8300-f5ff-da2a-d7b6-2e25.ngrok.io/api/carrinhos/adicionar-produto', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -29,7 +29,7 @@ async function obterDetalhesCarrinho() {
     try {
         const token = localStorage.getItem('token');
       
-        const response = await fetch('http://localhost:8080/api/carrinhos/mostrar-carrinho', {
+        const response = await fetch('https://bfc2-2804-520-c3-8300-f5ff-da2a-d7b6-2e25.ngrok.io/api/carrinhos/mostrar-carrinho', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -113,7 +113,7 @@ async function preencherCarrinho() {
             btnExcluir.setAttribute('data-product-id', produto.idProduto);
             const increaseQuantity = async () => {
                 try {
-                    const response = await fetch('http://localhost:8080/api/carrinhos/aumentar-quantidade', {
+                    const response = await fetch('https://bfc2-2804-520-c3-8300-f5ff-da2a-d7b6-2e25.ngrok.io/api/carrinhos/aumentar-quantidade', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -138,7 +138,7 @@ async function preencherCarrinho() {
             const decreaseQuantity = async () => {
                 try {
                     if (produto.quantidade >= 1) {
-                        const response = await fetch('http://localhost:8080/api/carrinhos/diminuir-quantidade', {
+                        const response = await fetch('https://bfc2-2804-520-c3-8300-f5ff-da2a-d7b6-2e25.ngrok.io/api/carrinhos/diminuir-quantidade', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json',
@@ -181,7 +181,7 @@ async function excluirProdutoDoCarrinho(produtoId) {
             return; 
         }
 
-        const response = await fetch(`http://localhost:8080/api/carrinho-produto/${produtoId}`, {
+        const response = await fetch(`https://bfc2-2804-520-c3-8300-f5ff-da2a-d7b6-2e25.ngrok.io/api/carrinho-produto/${produtoId}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
